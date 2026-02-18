@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Script from 'next/script';
 
 import "./globals.css";
 
@@ -98,7 +99,7 @@ export default function LandingPage() {
 
       <section>
         <div className="ad-container my-4">
-          <script async="async" data-cfasync="false" src="https://pl28738715.effectivegatecpm.com/7d708169ec177c6d1417b39295610003/invoke.js"></script>
+          <Script strategy="afterInteractive" data-cfasync="false" src="https://pl28738715.effectivegatecpm.com/7d708169ec177c6d1417b39295610003/invoke.js"></Script>
           <div id="container-7d708169ec177c6d1417b39295610003"></div>
         </div>
       </section>
