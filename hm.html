@@ -1,0 +1,252 @@
+<!doctype html>
+
+<html class="dark" lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Infotec Milenial - Landing Page</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#135bec",
+              "accent-purple": "#6b21ff",
+              "background-light": "#f6f6f8",
+              "background-dark": "#0a0c12",
+            },
+            fontFamily: {
+              display: ["Space Grotesk", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .tech-grid {
+        background-image: linear-gradient(to right, rgba(19, 91, 236, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(19, 91, 236, 0.05) 1px, transparent 1px);
+        background-size: 40px 40px;
+      }
+      .glass-card {
+        background: rgba(25, 34, 51, 0.4);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .hero-glow {
+        background: radial-gradient(circle at 50% 50%, rgba(19, 91, 236, 0.15) 0%, rgba(107, 33, 255, 0.05) 50%, transparent 100%);
+      }
+    </style>
+  </head>
+  <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-x-hidden">
+    <div class="relative min-h-screen flex flex-col">
+      <!-- Header / Navigation -->
+      <header class="fixed top-0 w-full z-50 glass-card border-b border-white/5 px-6 lg:px-20 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="bg-primary p-1.5 rounded-lg flex items-center justify-center">
+            <span class="material-symbols-outlined text-white text-xl">rocket_launch</span>
+          </div>
+          <h2 class="text-xl font-bold tracking-tight">Infotec <span class="text-primary">Milenial</span></h2>
+        </div>
+        <nav class="hidden md:flex items-center gap-10">
+          <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Home</a>
+          <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Benefits</a>
+          <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Programs</a>
+          <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Community</a>
+        </nav>
+        <div class="flex items-center gap-4">
+          <button class="hidden sm:block text-sm font-semibold hover:text-primary px-4">Masuk</button>
+          <button class="bg-primary hover:bg-primary/90 text-white text-sm font-bold px-6 py-2.5 rounded-lg transition-all shadow-lg shadow-primary/20">Daftar Sekarang</button>
+        </div>
+      </header>
+      <!-- Hero Section -->
+      <main class="flex-1 pt-24">
+        <section class="relative min-h-[85vh] flex items-center justify-center px-6 overflow-hidden">
+          <!-- Background decorations -->
+          <div class="absolute inset-0 tech-grid pointer-events-none opacity-60"></div>
+          <div class="absolute top-1/4 left-1/4 w-96 h-96 hero-glow rounded-full blur-3xl opacity-50"></div>
+          <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-purple/10 rounded-full blur-3xl opacity-30"></div>
+          <div class="max-w-[1000px] w-full text-center z-10 space-y-8">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest mb-4">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span>
+              Batch #12 Terbuka Sekarang
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tighter leading-[1.1] text-balance">
+              Jadilah Arsitek Masa Depan <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent-purple">Digital</span> bersama Infotec Milenial.
+            </h1>
+            <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
+              Komunitas inkubator talent digital dan startup untuk mengakselerasi ide cemerlangmu menjadi realita melalui kurikulum intensif dan jaringan investor global.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+              <button
+                class="group flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-bold px-8 py-4 rounded-xl transition-all hover:scale-[1.02] shadow-xl shadow-primary/25 w-full sm:w-auto"
+              >
+                <span>Mulai Karir Digitalmu</span>
+                <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+              </button>
+              <button class="flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold px-8 py-4 rounded-xl transition-all w-full sm:w-auto">
+                <span class="material-symbols-outlined">play_circle</span>
+                <span>Pelajari Program</span>
+              </button>
+            </div>
+            <div class="pt-16 grid grid-cols-2 md:grid-cols-4 gap-8 opacity-50 grayscale contrast-125">
+              <img
+                alt="Tech Partner 1"
+                class="mx-auto"
+                data-alt="Corporate partner logo for technology incubator"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAN4vO9_MJ3K_G7CwYHRQrSp3G5_VmwyY-f7stwOX-4B9ZVeIXmhpwNhgczOq4M6tCXTigY8Cpz1KNkhrp7iSQgwY1CAKl45uarcA8sJvQhVWAqRzMz05hPgfAsaHzmp3AIyJCEYvhrZo2XJ5YOmKdcNRaEuBRmmKugcLhYCL_6EESfFJBqOTP6snSnvTpnCk6esVVkobQBBP-piBe7h8VaSmA68VEcXAC5KaEn_g0jznLrvrLKm44XuZI7s0uUJ_AEYPhRmES2G_uN"
+              />
+              <img
+                alt="Tech Partner 2"
+                class="mx-auto"
+                data-alt="Venture capital partner logo"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCX5N5aN6LuC1bSjuiO6utcfJA8LD2ZJbuORu4WK66YlEUcx1PDjw01FYjRuktQiJapT0VFfpjMg6LIr95ID0kLJ2kQAWazNze-aXyYvxG5Vh2ORK1vgYgWTEUxDJvJwL07uimbASxRjFdh8RfMO2aJ61ezDRO5ewyKERGiU-wyANZcaEeCmwTLnxp_zRViMedHWAaCud1QDBcUQ1PENoIgltF4zoKFtRwdt8BT1RRXldbZ3arTTBLvthR0-iezlNv1tTtNCEDOusGy"
+              />
+              <img
+                alt="Tech Partner 3"
+                class="mx-auto"
+                data-alt="Software company partner logo"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBryOM3G_DV17ZB7GQYB-JhC9XJv0eypo-4uPOmXuLzohPWjL6Vz8tSxwPqO7y2N09gQ47ScTlkOtL5jfjU1bxXh8Nq1qGiwrMXmg5CQJjfTSRM3ueBu5rVS7jadhNbFTnG676NOtvxUInzKyT9A3WA1-qREB1uU4qU7HZS58N3pCFK47XW5fRC2r9qTS0pQIOP09S6tvWLfVoCgcNX7W8MtsMxKF0Dk1uQGX4NuPtdZT_VgKI14ydBJOUc4PpelHS8gu7NllhRemvv"
+              />
+              <img
+                alt="Tech Partner 4"
+                class="mx-auto"
+                data-alt="Educational institution partner logo"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAXUGfIgGo5sczQMSYxoK7HnY-chQ9CGG5YN0rPInCA8frU-3uqP2de6rEQbhYBJx9sHHMmCebARYsReWfLbZeA-eebaP4389-kgH-ltKwJwQD58EST8eabWn4JSTFgVAlL9j6IYFXk0kg_VWSoboyc6VRQreVdhCjzy1OMXhITaz6CvhTU8V-4zT8IwZXQwZ1HrhmsQBaG5OP7ryQLnIfXkDKv1wi-laQso6sRFnzpkcPuqtMpzkfPpbyLFF8A-e3AnGTSZK7bTi3"
+              />
+            </div>
+          </div>
+        </section>
+        <!-- Value Proposition Section -->
+        <section class="py-24 px-6 lg:px-20 relative bg-[#080a0f]">
+          <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+              <div class="space-y-4">
+                <h2 class="text-4xl font-bold tracking-tight">Kenapa Gabung?</h2>
+                <p class="text-slate-400 max-w-xl text-lg">Kami menyediakan ekosistem lengkap untuk memastikan setiap langkahmu dalam dunia digital memiliki arah dan dukungan yang tepat.</p>
+              </div>
+              <a class="text-primary font-bold flex items-center gap-2 hover:underline" href="#"> Lihat semua keuntungan <span class="material-symbols-outlined">trending_flat</span> </a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <!-- Card 1 -->
+              <div class="glass-card group p-8 rounded-2xl hover:border-primary/50 transition-all hover:-translate-y-1">
+                <div class="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+                  <span class="material-symbols-outlined text-3xl">school</span>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Mentorship Eksklusif</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Belajar langsung dari praktisi top level di industri startup global dengan sesi 1-on-1 setiap minggu.</p>
+              </div>
+              <!-- Card 2 -->
+              <div class="glass-card group p-8 rounded-2xl hover:border-primary/50 transition-all hover:-translate-y-1">
+                <div class="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+                  <span class="material-symbols-outlined text-3xl">hub</span>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Networking Luas</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Terhubung dengan ribuan alumni, founder startup, dan investor global melalui platform komunitas internal.</p>
+              </div>
+              <!-- Card 3 -->
+              <div class="glass-card group p-8 rounded-2xl hover:border-primary/50 transition-all hover:-translate-y-1">
+                <div class="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+                  <span class="material-symbols-outlined text-3xl">database</span>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Akses Sumber Daya</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Dapatkan akses ke cloud credits, coworking space, dan tools premium senilai ratusan juta rupiah.</p>
+              </div>
+              <!-- Card 4 -->
+              <div class="glass-card group p-8 rounded-2xl hover:border-primary/50 transition-all hover:-translate-y-1">
+                <div class="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+                  <span class="material-symbols-outlined text-3xl">map</span>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Roadmap Jelas</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Kurikulum terstruktur yang membawa kamu dari nol hingga siap meluncurkan startup atau bekerja di Tech Giant.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Bottom CTA Section -->
+        <section class="py-24 px-6">
+          <div class="max-w-5xl mx-auto rounded-[2rem] overflow-hidden relative">
+            <div class="absolute inset-0 bg-primary/10"></div>
+            <div class="absolute inset-0 bg-gradient-to-br from-primary/30 to-accent-purple/20"></div>
+            <div class="relative z-10 p-12 md:p-20 text-center flex flex-col items-center gap-8">
+              <h2 class="text-4xl md:text-5xl font-bold tracking-tight">Siap Membangun Masa Depan?</h2>
+              <p class="text-lg text-slate-300 max-w-xl mx-auto">Ribuan talenta digital telah memulai perjalanan mereka di sini. Jangan biarkan idemu hanya menjadi sekadar mimpi.</p>
+              <div class="flex flex-col sm:flex-row gap-4 w-full justify-center">
+                <button class="bg-white text-primary font-black px-10 py-5 rounded-xl hover:bg-slate-100 transition-colors shadow-2xl">Daftar Gratis Sekarang</button>
+                <button class="bg-transparent border-2 border-white/20 text-white font-bold px-10 py-5 rounded-xl hover:bg-white/10 transition-colors">Hubungi Tim Kami</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <!-- Footer -->
+      <footer class="bg-[#05060a] border-t border-white/5 py-16 px-6 lg:px-20">
+        <div class="max-w-7xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+            <div class="col-span-1 md:col-span-1 space-y-6">
+              <div class="flex items-center gap-3">
+                <div class="bg-primary p-1.5 rounded-lg flex items-center justify-center">
+                  <span class="material-symbols-outlined text-white text-xl">rocket_launch</span>
+                </div>
+                <h2 class="text-xl font-bold tracking-tight">Infotec <span class="text-primary">Milenial</span></h2>
+              </div>
+              <p class="text-slate-500 text-sm leading-relaxed">Akselerator bakat digital terdepan di Indonesia, mencetak inovator masa depan yang siap bersaing secara global.</p>
+              <div class="flex gap-4">
+                <a class="text-slate-400 hover:text-primary transition-colors" href="#">
+                  <span class="material-symbols-outlined">public</span>
+                </a>
+                <a class="text-slate-400 hover:text-primary transition-colors" href="#">
+                  <span class="material-symbols-outlined">alternate_email</span>
+                </a>
+              </div>
+            </div>
+            <div class="space-y-6">
+              <h4 class="font-bold">Program</h4>
+              <ul class="space-y-4 text-sm text-slate-400">
+                <li><a class="hover:text-primary transition-colors" href="#">Digital Talent Incubator</a></li>
+                <li><a class="hover:text-primary transition-colors" href="#">Startup Bootcamp</a></li>
+                <li><a class="hover:text-primary transition-colors" href="#">Tech Leader Masterclass</a></li>
+              </ul>
+            </div>
+            <div class="space-y-6">
+              <h4 class="font-bold">Komunitas</h4>
+              <ul class="space-y-4 text-sm text-slate-400">
+                <li><a class="hover:text-primary transition-colors" href="#">Events</a></li>
+                <li><a class="hover:text-primary transition-colors" href="#">Networking</a></li>
+                <li><a class="hover:text-primary transition-colors" href="#">Blog &amp; Resources</a></li>
+              </ul>
+            </div>
+            <div class="space-y-6">
+              <h4 class="font-bold">Dukungan</h4>
+              <ul class="space-y-4 text-sm text-slate-400">
+                <li><a class="hover:text-primary transition-colors" href="#">Pusat Bantuan</a></li>
+                <li><a class="hover:text-primary transition-colors" href="#">Ketentuan Layanan</a></li>
+                <li><a class="hover:text-primary transition-colors" href="#">Kebijakan Privasi</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/5 text-slate-600 text-xs gap-4">
+            <p>© 2024 Infotec Milenial. All rights reserved.</p>
+            <div class="flex items-center gap-6">
+              <p>Dibuat dengan semangat untuk masa depan digital Indonesia</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
