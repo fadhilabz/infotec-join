@@ -98,12 +98,15 @@ export default function LandingPage() {
       </section>
 
       <section className="flex flex-col items-center my-8 w-full">
-        <p className="text-[10px] text-slate-500 mb-2 tracking-widest uppercase">Advertisement</p>
-
-        <div className="ad-container min-h-[100px] flex justify-center">
-          <Script id="adsterra-native-fix" strategy="afterInteractive" src="https://pl28739205.effectivegatecpm.com/fc/9c/51/fc9c518cb9345ecd37fbd43b17b42077.js" />
-          {/* ID ini harus sama persis dengan kode di link SRC agar iklannya mau nempel */}
-          <div id="container-fc9c518cb9345ecd37fbd43b17b42077"></div>
+        <Script
+          id="adsterra-banner"
+          src="https://pl28738715.effectivegatecpm.com/7d708169ec177c6d1417b39295610003/invoke.js"
+          strategy="afterInteractive"
+          // Hapus async="async", ganti jadi begini:
+          async={true}
+        />
+        <div id="container-7d708169ec177c6d1417b39295610003" className="min-h-[250px] w-full flex justify-center items-center">
+          {/* Iklan akan muncul di sini */}
         </div>
       </section>
 

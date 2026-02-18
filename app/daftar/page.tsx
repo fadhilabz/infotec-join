@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Script from "next/script"; // Tambahan: Import Script Next.js
 import "../globals.css";
 
 export default function RegisterPage() {
@@ -41,7 +42,6 @@ export default function RegisterPage() {
   const handleNext = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    // Langsung navigasi tanpa push ke Firebase
     router.push("/daftarDua");
   };
 
@@ -53,8 +53,6 @@ export default function RegisterPage() {
       }}
     >
       <div className="relative flex min-h-screen w-full flex-col">
-        
-
         <main className="flex-1 flex items-center justify-center p-6 lg:p-12">
           <div className="w-full max-w-2xl">
             <div className="mb-8 text-center md:text-left">
@@ -80,7 +78,9 @@ export default function RegisterPage() {
 
               <form className="p-8 space-y-6" onSubmit={handleNext}>
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-slate-300" htmlFor="email">Alamat Email</label>
+                  <label className="block text-sm font-medium text-slate-300" htmlFor="email">
+                    Alamat Email
+                  </label>
                   <div className="relative group">
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 group-focus-within:text-[#135bec] transition-colors">
                       <span className="material-symbols-outlined text-[20px]">mail</span>
@@ -99,7 +99,9 @@ export default function RegisterPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-slate-300" htmlFor="whatsapp">Nomor WhatsApp</label>
+                  <label className="block text-sm font-medium text-slate-300" htmlFor="whatsapp">
+                    Nomor WhatsApp
+                  </label>
                   <div className="relative group">
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 group-focus-within:text-emerald-500 transition-colors">
                       <span className="material-symbols-outlined text-[20px]">chat</span>
@@ -119,7 +121,9 @@ export default function RegisterPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="block text-sm font-medium text-slate-300" htmlFor="major">Program Studi</label>
+                    <label className="block text-sm font-medium text-slate-300" htmlFor="major">
+                      Program Studi
+                    </label>
                     <div className="relative group">
                       <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 group-focus-within:text-[#8b5cf6] transition-colors">
                         <span className="material-symbols-outlined text-[20px]">school</span>
@@ -132,18 +136,32 @@ export default function RegisterPage() {
                         className="block w-full pl-11 pr-10 py-3.5 bg-[#101622]/50 border border-white/10 rounded-xl text-white appearance-none focus:ring-2 focus:ring-[#8b5cf6]/50 focus:border-[#8b5cf6] transition-all outline-none"
                         id="major"
                       >
-                        <option value="" className="bg-[#192233]">Pilih Jurusan</option>
-                        <option value="if" className="bg-[#192233]">Teknik Informatika</option>
-                        <option value="si" className="bg-[#192233]">Sistem Informasi</option>
-                        <option value="dkv" className="bg-[#192233]">DKV / Multimedia</option>
-                        <option value="te" className="bg-[#192233]">Teknik Elektro</option>
-                        <option value="other" className="bg-[#192233]">Lainnya</option>
+                        <option value="" className="bg-[#192233]">
+                          Pilih Jurusan
+                        </option>
+                        <option value="if" className="bg-[#192233]">
+                          Teknik Informatika
+                        </option>
+                        <option value="si" className="bg-[#192233]">
+                          Sistem Informasi
+                        </option>
+                        <option value="dkv" className="bg-[#192233]">
+                          DKV / Multimedia
+                        </option>
+                        <option value="te" className="bg-[#192233]">
+                          Teknik Elektro
+                        </option>
+                        <option value="other" className="bg-[#192233]">
+                          Lainnya
+                        </option>
                       </select>
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <label className="block text-sm font-medium text-slate-300" htmlFor="year">Angkatan</label>
+                    <label className="block text-sm font-medium text-slate-300" htmlFor="year">
+                      Angkatan
+                    </label>
                     <div className="relative group">
                       <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 group-focus-within:text-[#135bec] transition-colors">
                         <span className="material-symbols-outlined text-[20px]">calendar_month</span>
@@ -173,6 +191,17 @@ export default function RegisterPage() {
                   </button>
                 </div>
               </form>
+
+              {/* AREA IKLAN DI DALAM FORM BAGIAN BAWAH */}
+              <div className="ad-container border-t border-white/5 pt-6 flex flex-col items-center">
+                {/* Label hanya muncul jika ada isi di dalam container iklan */}
+                <p className="text-[10px] text-slate-500 mb-2 tracking-widest uppercase opacity-0 [[id^=container-]:not(:empty)~&]:opacity-100">Sponsored Access</p>
+
+                <Script id="adsterra-native-dynamic" src="https://pl28739205.effectivegatecpm.com/fc/9c/51/fc9c518cb9345ecd37fbd43b17b42077.js" strategy="afterInteractive" />
+
+                {/* Container tanpa min-height. Jika Adsterra belum inject iklan, tingginya akan 0 */}
+                <div id="container-fc9c518cb9345ecd37fbd43b17b42077" className="w-full flex justify-center items-center rounded-lg transition-all duration-500 empty:h-0"></div>
+              </div>
             </div>
           </div>
         </main>

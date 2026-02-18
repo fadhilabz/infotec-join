@@ -4,12 +4,13 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { db } from "../lib/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import Script from "next/script";
 import "../globals.css";
 
 export default function DaftarDuaPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false); // Kunci agar data tidak tertimpa
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const [formData, setFormData] = useState({
     roles: [] as string[],
@@ -23,16 +24,14 @@ export default function DaftarDuaPage() {
 
   const [currentSkill, setCurrentSkill] = useState("");
 
-  // 1. Load data saat halaman dibuka
   useEffect(() => {
     const savedData = localStorage.getItem("pendaftaran_step2");
     if (savedData) {
       setFormData(JSON.parse(savedData));
     }
-    setIsLoaded(true); // Tandai data sudah selesai dimuat
+    setIsLoaded(true);
   }, []);
 
-  // 2. Simpan data setiap kali formData berubah
   useEffect(() => {
     if (isLoaded) {
       localStorage.setItem("pendaftaran_step2", JSON.stringify(formData));
@@ -90,11 +89,11 @@ export default function DaftarDuaPage() {
         <div className="w-full max-w-2xl">
           <div className="mb-8 text-center md:text-left">
             <h1 className="text-3xl font-bold text-white mb-2 pt-16">Pendaftaran Anggota</h1>
-            <p className="text-slate-400">Bergabunglah dengan komunitas talenta digital terbaik di Indonesia.</p>
+            <p className="text-slate-400">Lengkapi data kompetensi digital kamu.</p>
           </div>
         </div>
 
-        <div className="bg-white/5 backdrop-blur-[12px] border border-white/10 rounded-xl p-8 shadow-2xl">
+        <div className="bg-[#192233]/70 backdrop-blur-[12px] border border-white/10 rounded-xl p-8 shadow-2xl">
           <form onSubmit={handleSubmit} className="space-y-10">
             <section>
               <div className="pb-8">
@@ -103,8 +102,6 @@ export default function DaftarDuaPage() {
                     <span className="text-xs font-bold uppercase tracking-widest text-[#135bec]">Langkah 2 dari 3</span>
                     <h3 className="text-lg font-semibold text-white">Pilih Divisi / Role</h3>
                   </div>
-
-                  {/* Container untuk badge agar posisinya rapi di HP maupun Desktop */}
                   <div className="flex justify-start md:justify-end">
                     <span className="text-sm font-medium text-blue-400 px-3 py-1 rounded-full border border-white/10 bg-blue-700/20 whitespace-nowrap">75% Selesai</span>
                   </div>
@@ -142,17 +139,15 @@ export default function DaftarDuaPage() {
                   <div className="flex flex-wrap gap-2 p-3 min-h-[100px] bg-slate-900/50 border border-white/10 rounded-lg focus-within:border-[#135bec] transition-colors">
                     {formData.skills.map((skill) => (
                       <span key={skill} className="inline-flex items-center gap-1 px-3 py-1 bg-[#135bec]/20 text-[#135bec] text-sm font-medium rounded-full border border-[#135bec]/30">
-                        {skill}{" "}
-                        <span onClick={() => removeSkill(skill)} className="material-symbols-outlined text-xs cursor-pointer">
-                          close
-                        </span>
+                        {skill}
+                        <span onClick={() => removeSkill(skill)} className="material-symbols-outlined text-xs cursor-pointer ml-1">close</span>
                       </span>
                     ))}
                     <input
                       value={currentSkill}
                       onChange={(e) => setCurrentSkill(e.target.value)}
                       onKeyDown={addSkill}
-                      className="bg-transparent border-none focus:ring-0 text-sm flex-1 min-w-[120px] text-white"
+                      className="bg-transparent border-none focus:ring-0 text-sm flex-1 min-w-[120px] text-white outline-none"
                       placeholder="Tambah skill..."
                       type="text"
                     />
@@ -167,21 +162,11 @@ export default function DaftarDuaPage() {
                 </div>
                 <div className="grid grid-cols-1 gap-3">
                   {["beginner", "intermediate", "expert"].map((lvl) => (
-                    <label
-                      key={lvl}
-                      className={`flex items-center gap-3 p-4 bg-slate-900/50 border rounded-lg cursor-pointer hover:bg-slate-800 transition-colors group ${formData.experience === lvl ? "border-[#135bec]/30 ring-1 ring-[#135bec]/30" : "border-white/10"}`}
-                    >
-                      <input
-                        className="w-5 h-5 text-[#135bec] bg-slate-800 border-white/20 focus:ring-[#135bec]"
-                        name="experience"
-                        type="radio"
-                        value={lvl}
-                        checked={formData.experience === lvl}
-                        onChange={handleRadioChange}
-                      />
+                    <label key={lvl} className={`flex items-center gap-3 p-4 bg-slate-900/50 border rounded-lg cursor-pointer hover:bg-slate-800 transition-colors group ${formData.experience === lvl ? "border-[#135bec]/30 ring-1 ring-[#135bec]/30" : "border-white/10"}`}>
+                      <input className="w-5 h-5 text-[#135bec]" name="experience" type="radio" value={lvl} checked={formData.experience === lvl} onChange={handleRadioChange} />
                       <div className="flex flex-col">
                         <span className="font-medium text-white">{lvl === "beginner" ? "Pemula" : lvl === "intermediate" ? "Menengah" : "Mahir"}</span>
-                        <span className="text-xs text-slate-500">{lvl === "beginner" ? "0 - 1 Tahun" : lvl === "intermediate" ? "1 - 3 Tahun" : "3+ Tahun"} pengalaman</span>
+                        <span className="text-xs text-slate-500">{lvl === "beginner" ? "0 - 1 Tahun" : lvl === "intermediate" ? "1 - 3 Tahun" : "3+ Tahun"}</span>
                       </div>
                     </label>
                   ))}
@@ -190,22 +175,26 @@ export default function DaftarDuaPage() {
             </section>
 
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-10 border-t border-white/10">
-              <button
-                onClick={() => router.back()}
-                className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3 rounded-lg font-semibold text-slate-300 border border-white/10 hover:bg-white/5 transition-all "
-                type="button"
-              >
+              <button onClick={() => router.back()} className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3 rounded-lg font-semibold text-slate-300 border border-white/10 hover:bg-white/5 transition-all" type="button">
                 <span className="material-symbols-outlined text-xl">arrow_back</span> Kembali
               </button>
-              <button
-                disabled={loading}
-                className="w-full sm:w-auto flex items-center justify-center gap-2 px-12 py-3 rounded-lg font-bold text-white bg-[#135bec] hover:bg-[#135bec]/90 shadow-lg shadow-[#135bec]/20 transition-all  disabled:opacity-50"
-                type="submit"
-              >
+              <button disabled={loading} className="w-full sm:w-auto flex items-center justify-center gap-2 px-12 py-3 rounded-lg font-bold text-white bg-[#135bec] hover:bg-[#135bec]/90 shadow-lg shadow-[#135bec]/20 transition-all disabled:opacity-50" type="submit">
                 {loading ? "Menyimpan..." : "Lanjut Langkah 3"}
                 {!loading && <span className="material-symbols-outlined text-xl">arrow_forward</span>}
               </button>
-              
+            </div>
+
+            {/* Iklan yang hanya memakan ruang jika ada isi */}
+            <div className="ad-container border-t border-white/5 pt-6 flex flex-col items-center min-w-full">
+              <Script 
+                id="adsterra-step2-dynamic" 
+                src="https://pl28739205.effectivegatecpm.com/fc/9c/51/fc9c518cb9345ecd37fbd43b17b42077.js" 
+                strategy="afterInteractive" 
+              />
+              <div 
+                id="container-fc9c518cb9345ecd37fbd43b17b42077" 
+                className="w-full flex justify-center items-center rounded-lg transition-all duration-500 empty:h-0 overflow-hidden"
+              ></div>
             </div>
           </form>
         </div>
