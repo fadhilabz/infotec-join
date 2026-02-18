@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import Script from 'next/script';
+import Script from "next/script";
 
 import "./globals.css";
 
@@ -97,10 +97,13 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section>
-        <div className="ad-container my-4">
-          <Script strategy="afterInteractive" data-cfasync="false" src="https://pl28738715.effectivegatecpm.com/7d708169ec177c6d1417b39295610003/invoke.js"></Script>
-          <div id="container-7d708169ec177c6d1417b39295610003"></div>
+      <section className="flex flex-col items-center my-8 w-full">
+        <p className="text-[10px] text-slate-500 mb-2 tracking-widest uppercase">Advertisement</p>
+
+        <div className="ad-container min-h-[100px] flex justify-center">
+          <Script id="adsterra-native-fix" strategy="afterInteractive" src="https://pl28739205.effectivegatecpm.com/fc/9c/51/fc9c518cb9345ecd37fbd43b17b42077.js" />
+          {/* ID ini harus sama persis dengan kode di link SRC agar iklannya mau nempel */}
+          <div id="container-fc9c518cb9345ecd37fbd43b17b42077"></div>
         </div>
       </section>
 
