@@ -95,8 +95,13 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-      
-      
+
+      <section>
+        <div className="ad-container my-4">
+          <script async="async" data-cfasync="false" src="https://pl28738715.effectivegatecpm.com/7d708169ec177c6d1417b39295610003/invoke.js"></script>
+          <div id="container-7d708169ec177c6d1417b39295610003"></div>
+        </div>
+      </section>
 
       {/* --- FOOTER --- */}
       <footer className="py-10 text-center border-t border-white/5 text-slate-500 text-sm">
