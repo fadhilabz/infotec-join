@@ -140,7 +140,9 @@ export default function DaftarDuaPage() {
                     {formData.skills.map((skill) => (
                       <span key={skill} className="inline-flex items-center gap-1 px-3 py-1 bg-[#135bec]/20 text-[#135bec] text-sm font-medium rounded-full border border-[#135bec]/30">
                         {skill}
-                        <span onClick={() => removeSkill(skill)} className="material-symbols-outlined text-xs cursor-pointer ml-1">close</span>
+                        <span onClick={() => removeSkill(skill)} className="material-symbols-outlined text-xs cursor-pointer ml-1">
+                          close
+                        </span>
                       </span>
                     ))}
                     <input
@@ -162,7 +164,10 @@ export default function DaftarDuaPage() {
                 </div>
                 <div className="grid grid-cols-1 gap-3">
                   {["beginner", "intermediate", "expert"].map((lvl) => (
-                    <label key={lvl} className={`flex items-center gap-3 p-4 bg-slate-900/50 border rounded-lg cursor-pointer hover:bg-slate-800 transition-colors group ${formData.experience === lvl ? "border-[#135bec]/30 ring-1 ring-[#135bec]/30" : "border-white/10"}`}>
+                    <label
+                      key={lvl}
+                      className={`flex items-center gap-3 p-4 bg-slate-900/50 border rounded-lg cursor-pointer hover:bg-slate-800 transition-colors group ${formData.experience === lvl ? "border-[#135bec]/30 ring-1 ring-[#135bec]/30" : "border-white/10"}`}
+                    >
                       <input className="w-5 h-5 text-[#135bec]" name="experience" type="radio" value={lvl} checked={formData.experience === lvl} onChange={handleRadioChange} />
                       <div className="flex flex-col">
                         <span className="font-medium text-white">{lvl === "beginner" ? "Pemula" : lvl === "intermediate" ? "Menengah" : "Mahir"}</span>
@@ -175,27 +180,28 @@ export default function DaftarDuaPage() {
             </section>
 
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-10 border-t border-white/10">
-              <button onClick={() => router.back()} className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3 rounded-lg font-semibold text-slate-300 border border-white/10 hover:bg-white/5 transition-all" type="button">
+              <button
+                onClick={() => router.back()}
+                className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3 rounded-lg font-semibold text-slate-300 border border-white/10 hover:bg-white/5 transition-all"
+                type="button"
+              >
                 <span className="material-symbols-outlined text-xl">arrow_back</span> Kembali
               </button>
-              <button disabled={loading} className="w-full sm:w-auto flex items-center justify-center gap-2 px-12 py-3 rounded-lg font-bold text-white bg-[#135bec] hover:bg-[#135bec]/90 shadow-lg shadow-[#135bec]/20 transition-all disabled:opacity-50" type="submit">
+              <button
+                disabled={loading}
+                className="w-full sm:w-auto flex items-center justify-center gap-2 px-12 py-3 rounded-lg font-bold text-white bg-[#135bec] hover:bg-[#135bec]/90 shadow-lg shadow-[#135bec]/20 transition-all disabled:opacity-50"
+                type="submit"
+              >
                 {loading ? "Menyimpan..." : "Lanjut Langkah 3"}
                 {!loading && <span className="material-symbols-outlined text-xl">arrow_forward</span>}
               </button>
             </div>
 
             {/* Iklan yang hanya memakan ruang jika ada isi */}
-            <div className="ad-container border-t border-white/5 pt-6 flex flex-col items-center min-w-full">
-              <Script 
-                id="adsterra-step2-dynamic" 
-                src="https://pl28739205.effectivegatecpm.com/fc/9c/51/fc9c518cb9345ecd37fbd43b17b42077.js" 
-                strategy="afterInteractive" 
-              />
-              <div 
-                id="container-fc9c518cb9345ecd37fbd43b17b42077" 
-                className="w-full flex justify-center items-center rounded-lg transition-all duration-500 empty:h-0 overflow-hidden"
-              ></div>
-            </div>
+            <section className="flex flex-col items-center my-8 w-full">
+              <Script id="adsterra-banner" src="https://pl28738715.effectivegatecpm.com/7d708169ec177c6d1417b39295610003/invoke.js" strategy="afterInteractive" async={true} />
+              <div id="container-7d708169ec177c6d1417b39295610003" className="min-h-[250px] w-full flex justify-center items-center"></div>
+            </section>
           </form>
         </div>
       </main>

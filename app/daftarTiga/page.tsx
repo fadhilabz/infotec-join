@@ -69,7 +69,6 @@ export default function DaftarTigaPage() {
 
   return (
     <div className="bg-slate-950 dark:bg-[#101622] text-slate-900 dark:text-slate-100 min-h-screen flex flex-col font-['Space_Grotesk']">
-      
       <main className="flex-1 flex flex-col items-center py-12 px-6">
         <div className="w-full max-w-3xl">
           <div className="w-full max-w-2xl">
@@ -112,9 +111,7 @@ export default function DaftarTigaPage() {
               </div>
 
               <div className="group">
-                <label className="block text-lg font-semibold mb-3 group-focus-within:text-[#135bec] transition-colors text-white">
-                  Masalah yang ingin diselesaikan dengan teknologi?
-                </label>
+                <label className="block text-lg font-semibold mb-3 group-focus-within:text-[#135bec] transition-colors text-white">Masalah yang ingin diselesaikan dengan teknologi?</label>
                 <div className="relative">
                   <textarea
                     name="problemSolving"
@@ -147,17 +144,10 @@ export default function DaftarTigaPage() {
               </div>
 
               {/* IKLAN DINAMIS */}
-              <div className="ad-container border-t border-white/5 pt-8 flex flex-col items-center min-w-full">
-                <Script 
-                  id="adsterra-final-dynamic" 
-                  src="https://pl28739205.effectivegatecpm.com/fc/9c/51/fc9c518cb9345ecd37fbd43b17b42077.js" 
-                  strategy="afterInteractive" 
-                />
-                <div 
-                  id="container-fc9c518cb9345ecd37fbd43b17b42077" 
-                  className="w-full flex justify-center items-center rounded-lg transition-all duration-500 empty:h-0 overflow-hidden"
-                ></div>
-              </div>
+              <section className="flex flex-col items-center my-8 w-full">
+                <Script id="adsterra-banner" src="https://pl28738715.effectivegatecpm.com/7d708169ec177c6d1417b39295610003/invoke.js" strategy="afterInteractive" async={true} />
+                <div id="container-7d708169ec177c6d1417b39295610003" className="min-h-[250px] w-full flex justify-center items-center"></div>
+              </section>
             </form>
           </div>
 

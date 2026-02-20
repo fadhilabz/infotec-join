@@ -193,15 +193,10 @@ export default function RegisterPage() {
               </form>
 
               {/* AREA IKLAN DI DALAM FORM BAGIAN BAWAH */}
-              <div className="ad-container border-t border-white/5 pt-6 flex flex-col items-center">
-                {/* Label hanya muncul jika ada isi di dalam container iklan */}
-                <p className="text-[10px] text-slate-500 mb-2 tracking-widest uppercase opacity-0 [[id^=container-]:not(:empty)~&]:opacity-100">Sponsored Access</p>
-
-                <Script id="adsterra-native-dynamic" src="https://pl28739205.effectivegatecpm.com/fc/9c/51/fc9c518cb9345ecd37fbd43b17b42077.js" strategy="afterInteractive" />
-
-                {/* Container tanpa min-height. Jika Adsterra belum inject iklan, tingginya akan 0 */}
-                <div id="container-fc9c518cb9345ecd37fbd43b17b42077" className="w-full flex justify-center items-center rounded-lg transition-all duration-500 empty:h-0"></div>
-              </div>
+              <section className="flex flex-col items-center my-8 w-full">
+                <Script id="adsterra-banner" src="https://pl28738715.effectivegatecpm.com/7d708169ec177c6d1417b39295610003/invoke.js" strategy="afterInteractive" async={true} />
+                <div id="container-7d708169ec177c6d1417b39295610003" className="min-h-[250px] w-full flex justify-center items-center"></div>
+              </section>
             </div>
           </div>
         </main>
