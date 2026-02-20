@@ -13,6 +13,7 @@ export default function RegisterPage() {
   const [formData, setFormData] = useState({
     email: "",
     whatsapp: "",
+    name: "", // Tambahan state nama
     major: "",
     year: "",
   });
@@ -115,6 +116,28 @@ export default function RegisterPage() {
                       id="whatsapp"
                       placeholder="Contoh: 081234567890"
                       type="tel"
+                    />
+                  </div>
+                </div>
+
+                {/* --- INPUT NAMA LENGKAP (TAMBAHAN) --- */}
+                <div className="space-y-2">
+                  <label className="block text-sm font-medium text-slate-300" htmlFor="name">
+                    Nama Lengkap
+                  </label>
+                  <div className="relative group">
+                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 group-focus-within:text-[#135bec] transition-colors">
+                      <span className="material-symbols-outlined text-[20px]">person</span>
+                    </div>
+                    <input
+                      required
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="block w-full pl-11 pr-4 py-3.5 bg-[#101622]/50 border border-white/10 rounded-xl text-white placeholder:text-slate-600 focus:ring-2 focus:ring-[#135bec]/50 focus:border-[#135bec] transition-all outline-none"
+                      id="name"
+                      placeholder="Masukkan nama lengkap Anda"
+                      type="text"
                     />
                   </div>
                 </div>
