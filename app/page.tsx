@@ -1,13 +1,30 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Script from "next/script";
 
 import "./globals.css";
 
 export default function LandingPage() {
-  // Fungsi untuk scroll otomatis ke section pendaftaran
+  const [isFull, setIsFull] = useState(false);
+
+  useEffect(() => {
+    const checkQuota = async () => {
+      try {
+        // Tambahkan cache: "no-store" agar data selalu fresh dari server
+        const response = await fetch("/api/pendaftar/count", { cache: "no-store" });
+        const data = await response.json();
+        
+        // Langsung set isFull berdasarkan jawaban dari route.ts
+        setIsFull(data.isFull);
+      } catch (error) {
+        console.error("Gagal mengecek kuota:", error);
+      }
+    };
+    checkQuota();
+  }, []);
+
   const scrollToRegister = () => {
     const element = document.getElementById("pendaftaran-section");
     element?.scrollIntoView({ behavior: "smooth" });
@@ -17,7 +34,6 @@ export default function LandingPage() {
     <div className="min-h-screen bg-[#101622] text-slate-100 selection:bg-primary/30">
       {/* --- HERO SECTION --- */}
       <section className="relative flex flex-col items-center justify-center px-6 pt-24 pb-32 overflow-hidden">
-        {/* Dekorasi Background */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full z-0">
           <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-600/10 blur-[120px] rounded-full"></div>
           <div className="absolute bottom-[10%] right-[-5%] w-[30%] h-[30%] bg-purple-600/10 blur-[120px] rounded-full"></div>
@@ -53,14 +69,13 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* --- LIST KEUNTUNGAN (FEATURE SECTION) --- */}
+      {/* --- FEATURE SECTION --- */}
       <section className="py-24 px-6 lg:px-20 bg-black/20">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-white mb-4">Kenapa Harus Bergabung?</h2>
             <div className="h-1.5 w-20 bg-blue-600 mx-auto rounded-full"></div>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {features.map((item, index) => (
               <div key={index} className="glass-effect p-8 rounded-2xl border border-white/5 hover:border-blue-500/50 transition-colors group">
@@ -78,20 +93,34 @@ export default function LandingPage() {
       {/* --- FORM REGISTRASI SECTION --- */}
       <section id="pendaftaran-section" className="py-24 px-6 flex flex-col items-center justify-center">
         <div className="w-full max-w-2xl text-center mb-10">
-          <h2 className="text-4xl font-bold text-white mb-4">Siap untuk Memulai?</h2>
-          <p className="text-slate-400">Isi data di bawah ini untuk memulai perjalananmu.</p>
+          <h2 className="text-4xl font-bold text-white mb-4">
+            {isFull ? "Pendaftaran Ditutup" : "Siap untuk Memulai?"}
+          </h2>
+          <p className="text-slate-400">
+            {isFull ? "Maaf, kuota pendaftaran telah mencapai batas maksimum." : "Isi data di bawah ini untuk memulai perjalananmu."}
+          </p>
         </div>
 
-        {/* Kotak Form (Panggil Komponen Register kamu di sini) */}
         <div className="w-full max-w-2xl glass-effect rounded-3xl p-1 shadow-2xl overflow-hidden">
           <div className="bg-[#101622]/80 p-8 rounded-[22px]">
-            {/* Di sini kamu bisa memasukkan logika form yang sebelumnya sudah dibuat */}
             <div className="flex flex-col items-center py-10 text-center">
-              <span className="material-symbols-outlined text-6xl text-blue-500 mb-4 animate-bounce">person_add</span>
-              <h3 className="text-2xl font-bold text-white mb-6">Mulai Form Pendaftaran</h3>
-              <Link href="/daftar" className="px-10 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl font-black text-lg hover:scale-105 transition-transform">
-                BUKA FORMULIR
-              </Link>
+              {isFull ? (
+                <>
+                  <span className="material-symbols-outlined text-6xl text-red-500 mb-4">error</span>
+                  <h3 className="text-2xl font-bold text-white mb-6">Kuota Telah Penuh</h3>
+                  <button disabled className="px-10 py-4 bg-gray-600 text-gray-400 rounded-xl font-black text-lg cursor-not-allowed">
+                    MAAF, SUDAH PENUH
+                  </button>
+                </>
+              ) : (
+                <>
+                  <span className="material-symbols-outlined text-6xl text-blue-500 mb-4 animate-bounce">person_add</span>
+                  <h3 className="text-2xl font-bold text-white mb-6">Mulai Form Pendaftaran</h3>
+                  <Link href="/daftar" className="px-10 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl font-black text-lg hover:scale-105 transition-transform">
+                    BUKA FORMULIR
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -102,15 +131,11 @@ export default function LandingPage() {
           id="adsterra-banner"
           src="https://pl28738715.effectivegatecpm.com/7d708169ec177c6d1417b39295610003/invoke.js"
           strategy="afterInteractive"
-          // Hapus async="async", ganti jadi begini:
           async={true}
         />
-        <div id="container-7d708169ec177c6d1417b39295610003" className="min-h-[250px] w-full flex justify-center items-center">
-          {/* Iklan akan muncul di sini */}
-        </div>
+        <div id="container-7d708169ec177c6d1417b39295610003" className="min-h-[250px] w-full flex justify-center items-center"></div>
       </section>
 
-      {/* --- FOOTER --- */}
       <footer className="py-10 text-center border-t border-white/5 text-slate-500 text-sm">
         <p>© 2026 UKM START UP Infotec Milenial. Made with 💙 by Fadhil Abbas.</p>
       </footer>
@@ -119,19 +144,7 @@ export default function LandingPage() {
 }
 
 const features = [
-  {
-    icon: "groups",
-    title: "Networking",
-    desc: "Terhubung dengan ratusan mahasiswa dari Teknik Informatika.",
-  },
-  {
-    icon: "code",
-    title: "Project-Based",
-    desc: "Belajar coding, design, dan marketing langsung lewat proyek startup yang nyata.",
-  },
-  {
-    icon: "psychology",
-    title: "Mentorship",
-    desc: "Dibimbing langsung oleh praktisi industri yang sudah berpengalaman di dunia tech.",
-  },
+  { icon: "groups", title: "Networking", desc: "Terhubung dengan ratusan mahasiswa dari Teknik Informatika." },
+  { icon: "code", title: "Project-Based", desc: "Belajar coding, design, dan marketing langsung lewat proyek startup yang nyata." },
+  { icon: "psychology", title: "Mentorship", desc: "Dibimbing langsung oleh praktisi industri yang sudah berpengalaman di dunia tech." },
 ];
